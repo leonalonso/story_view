@@ -124,7 +124,7 @@ class StoryVideoState extends State<StoryVideo> {
                     Colors.black.withOpacity(0.1),
                     Colors.black.withOpacity(0.1),
                   ],
-                  stops: [0.50, 0.50, 1.0, 0.5],
+                  stops: [0.75, 0.75, 1.0, 0.5],
                 ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
               },
               blendMode: BlendMode.dstIn,
