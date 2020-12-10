@@ -215,7 +215,7 @@ class StoryItem {
     String url, {
     @required StoryController controller,
     Duration duration,
-    BoxFit imageFit = BoxFit.fitWidth,
+    
     String caption,
     bool shown = false,
     Map<String, dynamic> requestHeaders,
@@ -225,19 +225,14 @@ class StoryItem {
           color: Colors.black,
           child: Stack(
             children: <Widget>[
-              SizedBox.expand(
-                child: FittedBox(
-                  fit: BoxFit.cover,
-                  child: SizedBox(
-                    width: vcontroller.value.size?.width ?? 0,
-                    height: vcontroller.value.size?.height ?? 0,
-                    child:  
+                
               StoryVideo.url(
                 url,
                 controller: controller,
                 requestHeaders: requestHeaders,
               ),
-                    ),
+              
+                  
               SafeArea(
                 child: Align(
                   alignment: Alignment.bottomCenter,
