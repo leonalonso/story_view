@@ -181,9 +181,26 @@ class StoryImageState extends State<StoryImage> {
   Widget getContentView() {
     switch (widget.imageLoader.state) {
       case LoadState.success:
-        return RawImage(
+        return 
+          ShaderMask(
+              shaderCallback: (rect) {
+                return LinearGradient(
+                  end: Alignment.topCenter,
+                  begin: Alignment.bottomCenter,
+                  colors: <Color>[
+                    Colors.black.withOpacity(1.0),
+                    Colors.black.withOpacity(1.0),
+                    Colors.black.withOpacity(0.1),
+                    Colors.black.withOpacity(0.1),
+                  ],
+                  stops: [0.75, 0.75, 1.0, 0.5],
+                ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
+              },
+              blendMode: BlendMode.dstIn,
+              child: RawImage(
           image: this.currentFrame,
           fit: widget.fit,
+        ),
         );
       case LoadState.failure:
         return Center(
