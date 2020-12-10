@@ -108,15 +108,31 @@ class StoryVideoState extends State<StoryVideo> {
     if (widget.videoLoader.state == LoadState.success &&
         playerController.value.initialized) {
       return SizedBox.expand(
-          child: FittedBox(
-            fit: BoxFit.cover,
-            child: SizedBox(
-              width: playerController.value.size?.width ?? 0,
-              height: playerController.value.size?.height ?? 0,
+        child: FittedBox(
+          fit: BoxFit.cover,
+          child: SizedBox(
+            width: playerController.value.size?.width ?? 0,
+            height: playerController.value.size?.height ?? 0,
+            child: ShaderMask(
+              shaderCallback: (rect) {
+                return LinearGradient(
+                  end: Alignment.topCenter,
+                  begin: Alignment.bottomCenter,
+                  colors: <Color>[
+                    Colors.black.withOpacity(1.0),
+                    Colors.black.withOpacity(1.0),
+                    Colors.black.withOpacity(0.1),
+                    Colors.black.withOpacity(0.1),
+                  ],
+                  stops: [0.50, 0.50, 1.0, 0.5],
+                ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
+              },
+              blendMode: BlendMode.dstIn,
               child: CachedVideoPlayer(playerController),
             ),
           ),
-        );
+        ),
+      );
     }
 
     return widget.videoLoader.state == LoadState.loading
@@ -132,7 +148,7 @@ class StoryVideoState extends State<StoryVideo> {
           )
         : Center(
             child: Text(
-            "Media failed to load.",
+            "",
             style: TextStyle(
               color: Colors.white,
             ),
