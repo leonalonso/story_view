@@ -110,8 +110,8 @@ class StoryVideoState extends State<StoryVideo> {
           child: FittedBox(
             fit: BoxFit.cover,
             child: SizedBox(
-              width: vcontroller.value.size?.width ?? 0,
-              height: vcontroller.value.size?.height ?? 0,
+              width: playerController.value.size?.width ?? 0,
+              height: playerController.value.size?.height ?? 0,
               child: VideoPlayer(playerController),
             ),
           ),
