@@ -212,19 +212,7 @@ class StoryImageState extends State<StoryImage> {
           ),
         ));
       default:
-        return Center(
-                  child: Container(
-                    transform: Matrix4.translationValues(0, 0, 0.0),
-                    width: 28,
-                    height: 28,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2.5,
-                      backgroundColor: Colors.white54,
-                      valueColor:
-                          new AlwaysStoppedAnimation<Color>(Colors.white),
-                    ),
-                  ),
-                );
+        return Center();
     }
   }
 
