@@ -213,14 +213,18 @@ class StoryImageState extends State<StoryImage> {
         ));
       default:
         return Center(
-              child: CupertinoTheme(
-                        data: CupertinoTheme.of(context)
-                            .copyWith(brightness: Brightness.dark),
-                        child: CupertinoActivityIndicator(
-                          radius: 15,
-                        ),
-                      ),
-            );
+                  child: Container(
+                    transform: Matrix4.translationValues(0, 0, 0.0),
+                    width: 28,
+                    height: 28,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2.5,
+                      backgroundColor: Colors.white54,
+                      valueColor:
+                          new AlwaysStoppedAnimation<Color>(Colors.white),
+                    ),
+                  ),
+                );
     }
   }
 
